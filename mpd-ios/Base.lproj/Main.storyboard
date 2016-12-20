@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dTP-0J-wWH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dTP-0J-wWH">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -303,10 +303,10 @@
             </objects>
             <point key="canvasLocation" x="1020" y="-790"/>
         </scene>
-        <!--Playlists-->
+        <!--Artists-->
         <scene sceneID="1qq-KK-XRg">
             <objects>
-                <tableViewController id="LrP-ih-Uof" customClass="ViewControllerPlaylists" customModule="mpd_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="LrP-ih-Uof" customClass="ViewControllerMusic" customModule="mpd_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="5jP-Tp-Dur">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -319,7 +319,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLAYLIST" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgQ-N4-N83">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ARTIST" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgQ-N4-N83">
                                             <rect key="frame" x="8" y="11" width="359" height="21"/>
                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -340,7 +340,7 @@
                             <outlet property="delegate" destination="LrP-ih-Uof" id="TEe-0h-rXo"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Playlists" id="idG-do-EEQ"/>
+                    <navigationItem key="navigationItem" title="Artists" id="idG-do-EEQ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yhJ-Aa-xeA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -384,11 +384,11 @@
             </objects>
             <point key="canvasLocation" x="1686" y="689"/>
         </scene>
-        <!--Playlists-->
+        <!--Music-->
         <scene sceneID="5C7-av-fvB">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EAb-zd-k4O" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Playlists" image="playlist" id="dHF-3j-zNs"/>
+                    <tabBarItem key="tabBarItem" title="Music" image="playlist" id="dHF-3j-zNs"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zkT-Dl-NHk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

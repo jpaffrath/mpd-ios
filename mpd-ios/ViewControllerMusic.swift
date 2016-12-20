@@ -1,5 +1,5 @@
 //
-//  ViewControllerPlaylists.swift
+//  ViewControllerMusic.swift
 //  mpd-ios
 //
 //  Created by Julius Paffrath on 16.12.16.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-class ViewControllerPlaylists: UITableViewController {
-    private let TAG_LABEL_PLAYLIST: Int = 100
+class ViewControllerMusic: UITableViewController {
+    private let TAG_LABEL_ARTIST: Int = 100
     private let COLOR_BLUE = UIColor.init(colorLiteralRed: Float(55.0/255), green: Float(111.0/255), blue: Float(165.0/255), alpha: 1)
     
-    private var playlists: [String] = []
+    private var artists: [String] = []
     
     // MARK: Init
     
@@ -20,21 +20,21 @@ class ViewControllerPlaylists: UITableViewController {
         self.refreshControl = UIRefreshControl.init()
         self.refreshControl?.backgroundColor = self.COLOR_BLUE
         self.refreshControl?.tintColor = UIColor.white
-        self.refreshControl?.addTarget(self, action: #selector(ViewControllerPlaylists.reloadPlaylists), for: UIControlEvents.valueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(ViewControllerMusic.reloadArtists), for: UIControlEvents.valueChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        MPD.sharedInstance.getPlaylists { (playlists: [String]) in
-            self.playlists = playlists
+        MPD.sharedInstance.getArtists { (artists: [String]) in
+            self.artists = artists
             self.tableView.reloadData()
         }
     }
     
     // MARK: Private Methods
     
-    func reloadPlaylists() {
-        MPD.sharedInstance.getPlaylists { (playlists: [String]) in
-            self.playlists = playlists
+    func reloadArtists() {
+        MPD.sharedInstance.getArtists { (artists: [String]) in
+            self.artists = artists
             self.tableView.reloadData()
             self.refreshControl?.endRefreshing()
         }
@@ -43,7 +43,7 @@ class ViewControllerPlaylists: UITableViewController {
     // MARK: TableView Delegates
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        if self.playlists.count > 0 {
+        if self.artists.count > 0 {
             self.tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
             self.tableView.backgroundView = nil
             return 1
@@ -52,7 +52,7 @@ class ViewControllerPlaylists: UITableViewController {
             let size = self.view.bounds.size
             let labelMsg = UILabel.init(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: size.width, height: size.height)))
             
-            labelMsg.text = "No playlists available! Pull to refresh playlists"
+            labelMsg.text = "No artists available! Pull to refresh"
             labelMsg.textColor = self.COLOR_BLUE
             labelMsg.numberOfLines = 0
             labelMsg.textAlignment = NSTextAlignment.center
@@ -67,21 +67,21 @@ class ViewControllerPlaylists: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.playlists.count
+        return self.artists.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
 
-        let labelPlaylist: UILabel = cell.viewWithTag(self.TAG_LABEL_PLAYLIST) as! UILabel
-        labelPlaylist.text = self.playlists[indexPath.row]
+        let labelPlaylist: UILabel = cell.viewWithTag(self.TAG_LABEL_ARTIST) as! UILabel
+        labelPlaylist.text = self.artists[indexPath.row]
 
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewController = self.storyboard?.instantiateViewController(withIdentifier: "viewControllerSongs") as! ViewControllerSongs
-        viewController.playlist = self.playlists[indexPath.row]
+        viewController.playlist = self.artists[indexPath.row]
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
