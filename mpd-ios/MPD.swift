@@ -32,6 +32,19 @@ class MPD: NSObject {
         return String(stripped.characters.dropLast())
     }
     
+    /// Strips a mpd server list result
+    private func stripListResult(by: String, input: String) -> [String] {
+        var values: [String] = []
+        
+        for line in input.components(separatedBy: "\n") {
+            if line.contains(by) == true {
+                values.append(line.substring(from: by.endIndex))
+            }
+        }
+        
+        return values
+    }
+    
     /// Connects to a mpd server
     private func connect() -> Bool {
         switch self.client.connect(timeout: self.TIMEOUT) {
@@ -226,6 +239,30 @@ class MPD: NSObject {
                 handler([])
             }
         })
+    }
+    
+    func getArtists(handler:@escaping ([String])->Void) {
+        self.sendCommand(command: "list artist") { (result: String?) in
+            var artists: [String] = []
+
+            if result != nil {
+                artists = self.stripListResult(by: "Artist: ", input: result!)
+            }
+            
+            handler(artists)
+        }
+    }
+    
+    func getAlbums(handler:@escaping ([String])->Void) {
+        self.sendCommand(command: "list album") { (result: String?) in
+            var albums: [String] = []
+            
+            if result != nil {
+                albums = self.stripListResult(by: "Album: ", input: result!)
+            }
+            
+            handler(albums)
+        }
     }
     
     /// Begins playing the playlist
