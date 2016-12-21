@@ -11,8 +11,8 @@ import SwiftSocket
 import Toast_Swift
 
 class ViewControllerHome: UIViewController, UITableViewDelegate, UITableViewDataSource {
-	private let TAG_LABEL_SONGNR:   Int = 100
-	private let TAG_LABEL_SONGNAME: Int = 101
+	private let TAG_LABEL_SONGNAME:   Int = 100
+	private let TAG_LABEL_SONGARTIST: Int = 101
 	private let COLOR_BLUE = UIColor.init(colorLiteralRed: Float(55.0/255), green: Float(111.0/255), blue: Float(165.0/255), alpha: 1)
 	private let TOAST_DURATION = 1.0
 	
@@ -254,11 +254,11 @@ class ViewControllerHome: UIViewController, UITableViewDelegate, UITableViewData
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
 		
-		let labelSongnr: UILabel = cell.viewWithTag(self.TAG_LABEL_SONGNR) as! UILabel
-		labelSongnr.text = String(self.currentPlaylist[indexPath.row].track)
-		
 		let labelSongname: UILabel = cell.viewWithTag(self.TAG_LABEL_SONGNAME) as! UILabel
-		labelSongname.text = self.currentPlaylist[indexPath.row].title
+		labelSongname.text = String(self.currentPlaylist[indexPath.row].title)
+		
+		let labelArtist: UILabel = cell.viewWithTag(self.TAG_LABEL_SONGARTIST) as! UILabel
+		labelArtist.text = self.currentPlaylist[indexPath.row].artist
 		
 		return cell
 	}
@@ -272,5 +272,9 @@ class ViewControllerHome: UIViewController, UITableViewDelegate, UITableViewData
 			self.tableViewSongs.deselectRow(at: indexPath, animated: true)
 			self.loadState()
 		}
+	}
+	
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		return 55
 	}
 }
