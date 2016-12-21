@@ -280,4 +280,11 @@ class ViewControllerHome: UIViewController, UITableViewDelegate, UITableViewData
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		return 55
 	}
+	
+	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+		if editingStyle == .delete {
+			MPD.sharedInstance.delete(nr: indexPath.row, handler: {
+			})
+		}
+	}
 }
