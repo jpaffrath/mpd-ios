@@ -432,6 +432,19 @@ class MPD: NSObject {
         })
     }
     
+    /// Loads a given song into the current playlist
+    ///
+    /// - parameters:
+    ///     - title: title of the song
+    ///     - fromAlbum: album containing the song
+    ///     - byArtist: artist of the song
+    ///     - handler: is called when the command has finished
+    func loadSong(title: String, fromAlbum: String, byArtist: String, handler:@escaping ()->Void) {
+        self.sendCommand(command: "searchadd title \"\(title)\" album \"\(fromAlbum)\" artist \"\(byArtist)\"") { (result: String?) in
+            handler()
+        }
+    }
+    
     /// Loads a playlist
     ///
     /// - parameters:
