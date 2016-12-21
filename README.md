@@ -1,16 +1,15 @@
 # mpd-ios (MPD Player)
-MPD Player is an iOS application for controlling a mpd server.
+MPD Player is an iOS application written in Swift 3 for controlling a mpd server.
 
 # Features
 The following features are already implemented
 * Full music control. Play, Pause, Next, Previous song
-* Current playlist and current song information
-* Displaying a list of all playlists
-* Displaying songs of a playlist with metadata
-* Selecting a song from a playlist to play
+* Scroll artists, albums and songs
+* Add songs or albums to your current playlist
+* Display current playlist and current song information
 
 # Installation
-MPD Player needs the [SwiftSocket](https://github.com/swiftsocket/SwiftSocket) library.
+MPD Player needs the libraries [SwiftSocket](https://github.com/swiftsocket/SwiftSocket) and [Toast-Swift](https://github.com/scalessec/Toast-Swift).
 Clone the git repository and run `pod install`. This will download the required dependencies and creates a _xcworkspace_ file for you.
 
 # :bulb: Contributions
