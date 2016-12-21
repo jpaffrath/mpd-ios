@@ -415,6 +415,17 @@ class MPD: NSObject {
         })
     }
     
+    /// Deletes a song from the current playlist
+    ///
+    /// - parameters:
+    ///     - nr: position of the song in the playlist
+    ///     - handler: is called when the command has finished
+    func delete(nr: Int, handler:@escaping ()->Void) {
+        self.sendCommand(command: "delete \(nr)") { (result: String?) in
+            handler()
+        }
+    }
+    
     /// Gets the current song in the playlist
     ///
     /// - parameters:
