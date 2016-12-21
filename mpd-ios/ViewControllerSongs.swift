@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Toast_Swift
 
 class ViewControllerSongs: UITableViewController {
     private let TAG_LABEL_SONGNAME: Int = 100
@@ -82,5 +83,11 @@ class ViewControllerSongs: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let song = self.songs[indexPath.row]
+
+        MPD.sharedInstance.loadSong(title: song, fromAlbum: self.album, byArtist: self.artist) {
+            self.tableView.deselectRow(at: indexPath, animated: true)
+            self.tableView.makeToast("Added \(song) to current playlist", duration: 0.5, position: .center)
+        }
     }
 }
