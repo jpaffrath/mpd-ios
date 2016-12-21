@@ -124,7 +124,7 @@ class MPD: NSObject {
             }
             
             DispatchQueue.main.async {
-                if (response.isEmpty) {
+                if (response.isEmpty || response == "OK\n") {
                     resultHandler(nil)
                 }
                 else {
@@ -422,9 +422,7 @@ class MPD: NSObject {
     func getCurrentSong(handler:@escaping (MPDSong?)->Void) {
         self.sendCommand(command: "currentsong", resultHandler: {(result: String?) in
             if result != nil {
-                if result != "OK\n" {
-                    handler(MPDSong.init(input: result!))
-                }
+                handler(MPDSong.init(input: result!))
             }
             else {
                 handler(nil)
