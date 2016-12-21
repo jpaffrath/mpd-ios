@@ -46,4 +46,19 @@ class MPDSong: NSObject {
             }
         }
     }
+    
+    override func isEqual(_ object: Any?) -> Bool {
+        if let obj = object as? MPDSong {
+            if self === obj {
+                return true
+            }
+            
+            if self.title == obj.title && self.artist == obj.artist &&
+                self.album == obj.album && self.track == obj.track {
+                return true
+            }
+        }
+        
+        return false
+    }
 }
