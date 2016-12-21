@@ -36,6 +36,8 @@ class ViewControllerHome: UIViewController, UITableViewDelegate, UITableViewData
 	
 	private var updateTimer: Timer? = nil
 	
+	private var currentSong: MPDSong? = nil
+	
     @IBOutlet weak var buttonPlay: UIButton!
     @IBOutlet weak var buttonNext: UIButton!
     @IBOutlet weak var buttonPrevious: UIButton!
@@ -192,7 +194,12 @@ class ViewControllerHome: UIViewController, UITableViewDelegate, UITableViewData
 	
 	private func loadCurrentSong(song: MPDSong?) {
 		if let title = song?.title, let artist = song?.artist {
-			self.labelCurrentSong.text = "\(title) - \(artist)"
+			if self.currentSong != song {
+				self.currentSong = song
+
+				self.labelCurrentSong.text = "\(title) - \(artist)"
+				self.scrollToSong(song: song)
+			}
 		}
 		else {
 			self.labelCurrentSong.text = "No current song"
@@ -202,6 +209,15 @@ class ViewControllerHome: UIViewController, UITableViewDelegate, UITableViewData
 	func clearPlaylist() {
 		MPD.sharedInstance.clearCurrentPlaylist {
 			self.view.makeToast("Current playlist is cleared", duration: self.TOAST_DURATION, position: .center)
+		}
+	}
+	
+	private func scrollToSong(song: MPDSong?) {
+		if song != nil {
+			if let index = self.currentPlaylist.index(of: song!) {
+					let indexPath = IndexPath(row: index, section: 0)
+					self.tableViewSongs.scrollToRow(at: indexPath, at: .top, animated: true)
+			}
 		}
 	}
 	
