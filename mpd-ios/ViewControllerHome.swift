@@ -204,4 +204,11 @@ class ViewControllerHome: UIViewController, UITableViewDelegate, UITableViewData
 	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 		return "Current Playlist"
 	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		MPD.sharedInstance.play(nr: indexPath.row) { 
+			self.tableViewSongs.deselectRow(at: indexPath, animated: true)
+			self.loadState()
+		}
+	}
 }
