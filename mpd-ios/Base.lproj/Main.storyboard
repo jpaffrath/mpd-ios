@@ -249,10 +249,10 @@
             </objects>
             <point key="canvasLocation" x="-324" y="689"/>
         </scene>
-        <!--View Controller Songs-->
+        <!--View Controller Albums-->
         <scene sceneID="eWC-f7-Hfy">
             <objects>
-                <tableViewController storyboardIdentifier="viewControllerSongs" id="Tgl-wx-DBY" customClass="ViewControllerSongs" customModule="mpd_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ViewControllerAlbums" id="Tgl-wx-DBY" customClass="ViewControllerAlbums" customModule="mpd_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="QX6-PX-MjJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -265,16 +265,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IfX-4m-vRe">
-                                            <rect key="frame" x="8" y="11" width="49" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="49" id="Fom-NV-x7p"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SONG NAME" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYD-jt-EGT">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALBUM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYD-jt-EGT">
                                             <rect key="frame" x="65" y="11" width="302" height="21"/>
                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -282,12 +273,9 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="yYD-jt-EGT" firstAttribute="leading" secondItem="IfX-4m-vRe" secondAttribute="trailing" constant="8" symbolic="YES" id="1yb-rA-Lmq"/>
-                                        <constraint firstItem="IfX-4m-vRe" firstAttribute="firstBaseline" secondItem="yYD-jt-EGT" secondAttribute="firstBaseline" id="2Qc-VM-vf5"/>
-                                        <constraint firstItem="IfX-4m-vRe" firstAttribute="centerY" secondItem="frr-ki-z1k" secondAttribute="centerY" id="6WG-Og-VCG"/>
-                                        <constraint firstItem="IfX-4m-vRe" firstAttribute="leading" secondItem="frr-ki-z1k" secondAttribute="leadingMargin" id="E9m-0R-ixr"/>
-                                        <constraint firstItem="IfX-4m-vRe" firstAttribute="baseline" secondItem="yYD-jt-EGT" secondAttribute="baseline" id="ZOl-dB-NPT"/>
-                                        <constraint firstItem="IfX-4m-vRe" firstAttribute="top" secondItem="frr-ki-z1k" secondAttribute="topMargin" constant="3" id="t4y-FP-3i3"/>
+                                        <constraint firstItem="yYD-jt-EGT" firstAttribute="top" secondItem="frr-ki-z1k" secondAttribute="topMargin" constant="3" id="cAB-qB-wvK"/>
+                                        <constraint firstItem="yYD-jt-EGT" firstAttribute="centerY" secondItem="frr-ki-z1k" secondAttribute="centerY" id="eeE-20-I6O"/>
+                                        <constraint firstItem="yYD-jt-EGT" firstAttribute="leading" secondItem="frr-ki-z1k" secondAttribute="leadingMargin" constant="57" id="w4H-mK-RQt"/>
                                         <constraint firstItem="yYD-jt-EGT" firstAttribute="trailing" secondItem="frr-ki-z1k" secondAttribute="trailingMargin" id="wXS-1h-2kf"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -301,7 +289,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mKD-Nj-76E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1020" y="-790"/>
+            <point key="canvasLocation" x="958" y="-851"/>
         </scene>
         <!--Artists-->
         <scene sceneID="1qq-KK-XRg">

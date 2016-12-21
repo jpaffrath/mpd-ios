@@ -1,5 +1,5 @@
 //
-//  ViewControllerSongs.swift
+//  ViewControllerAlbums.swift
 //  mpd-ios
 //
 //  Created by Julius Paffrath on 16.12.16.
@@ -8,15 +8,13 @@
 
 import UIKit
 
-class ViewControllerSongs: UITableViewController {
-    private let TAG_LABEL_SONGNR:   Int = 100
-    private let TAG_LABEL_SONGNAME: Int = 101
+class ViewControllerAlbums: UITableViewController {
+    private let TAG_LABEL_ALBUMNAME: Int = 100
     private let COLOR_BLUE = UIColor.init(colorLiteralRed: Float(55.0/255), green: Float(111.0/255), blue: Float(165.0/255), alpha: 1)
-    
-    private var songs: [MPDSong] = []
+
     private var albumbs: [String] = []
     
-    var playlist: String = ""
+    var artist: String = ""
     
     // MARK: Init
     
@@ -24,43 +22,32 @@ class ViewControllerSongs: UITableViewController {
         self.refreshControl = UIRefreshControl.init()
         self.refreshControl?.backgroundColor = self.COLOR_BLUE
         self.refreshControl?.tintColor = UIColor.white
-        self.refreshControl?.addTarget(self, action: #selector(ViewControllerSongs.reloadSongs), for: UIControlEvents.valueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(ViewControllerAlbums.reloadAlbums), for: UIControlEvents.valueChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.title = self.playlist
-        self.reloadSongs()
+        self.title = self.artist
+        self.reloadAlbums()
     }
     
     // MARK: Private Methods
     
-    func reloadSongs() {
-        MPD.sharedInstance.getSongsFromPlaylist(playlist: self.playlist, handler: { (songs: [MPDSong]) in
-            self.songs = songs
-            self.reloadAlbums()
+    func reloadAlbums() {
+        MPD.sharedInstance.getAlbums(forArtist: self.artist) { (albums: [String]) in
+            self.albumbs = albums
             self.tableView.reloadData()
             self.refreshControl?.endRefreshing()
-        })
-    }
-    
-    private func reloadAlbums() {
-        for song in self.songs {
-            let album = song.album
-            
-            if self.albumbs.contains(album) == false {
-                self.albumbs.append(album)
-            }
         }
     }
     
     // MARK: TableView Delegates
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        if self.songs.count > 0 {
+        if self.albumbs.count > 0 {
             self.tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
             self.tableView.backgroundView = nil
 
-            return self.albumbs.count
+            return 1
         }
         else {
             let size = self.view.bounds.size
@@ -79,30 +66,23 @@ class ViewControllerSongs: UITableViewController {
         
         return 0
     }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.albumbs[section]
-    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.songs.count
+        return self.albumbs.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
-        
-        let labelSongnr: UILabel = cell.viewWithTag(self.TAG_LABEL_SONGNR) as! UILabel
-        labelSongnr.text = String(self.songs[indexPath.row].track)
 
-        let labelSongname: UILabel = cell.viewWithTag(self.TAG_LABEL_SONGNAME) as! UILabel
-        labelSongname.text = self.songs[indexPath.row].title
+        let labelAlbumname: UILabel = cell.viewWithTag(self.TAG_LABEL_ALBUMNAME) as! UILabel
+        labelAlbumname.text = String(self.albumbs[indexPath.row])
 
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    /*override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         MPD.sharedInstance.loadSongFromPlaylist(playlist: self.playlist, songNr: indexPath.row) { 
             
         }
-    }
+    }*/
 }

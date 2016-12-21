@@ -80,8 +80,8 @@ class ViewControllerMusic: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "viewControllerSongs") as! ViewControllerSongs
-        viewController.playlist = self.artists[indexPath.row]
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ViewControllerAlbums") as! ViewControllerAlbums
+        viewController.artist = self.artists[indexPath.row]
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
