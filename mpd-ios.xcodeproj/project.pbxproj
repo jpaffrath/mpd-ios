@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		C60A38E61E0A76910043F02C /* ViewControllerSongs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60A38E51E0A76910043F02C /* ViewControllerSongs.swift */; };
-		C682DCC71E02959C00778256 /* MPDStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C682DCC61E02959C00778256 /* MPDStatus.swift */; };
+		C60A38ED1E0AC7BD0043F02C /* MPD.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60A38EA1E0AC7BD0043F02C /* MPD.swift */; };
+		C60A38EE1E0AC7BD0043F02C /* MPDSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60A38EB1E0AC7BD0043F02C /* MPDSong.swift */; };
+		C60A38EF1E0AC7BD0043F02C /* MPDStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60A38EC1E0AC7BD0043F02C /* MPDStatus.swift */; };
 		C682DCC91E029ECD00778256 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C682DCC81E029ECD00778256 /* String.swift */; };
 		C682DCCF1E0426B700778256 /* ViewControllerMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C682DCCE1E0426B700778256 /* ViewControllerMusic.swift */; };
 		C682DCD11E042CAC00778256 /* ViewControllerAlbums.swift in Sources */ = {isa = PBXBuildFile; fileRef = C682DCD01E042CAC00778256 /* ViewControllerAlbums.swift */; };
@@ -19,8 +21,6 @@
 		C6EFE6E21E01A2590018CB26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6EFE6E11E01A2590018CB26 /* Assets.xcassets */; };
 		C6EFE6E51E01A2590018CB26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6EFE6E31E01A2590018CB26 /* LaunchScreen.storyboard */; };
 		C6EFE6ED1E01A3F60018CB26 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EFE6EC1E01A3F60018CB26 /* Settings.swift */; };
-		C6EFE6EF1E01AEF00018CB26 /* MPD.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EFE6EE1E01AEF00018CB26 /* MPD.swift */; };
-		C6FAAC5F1E05EF9600AE85A1 /* MPDSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FAAC5E1E05EF9600AE85A1 /* MPDSong.swift */; };
 		D83C58BB556145DEAF1F30BD /* Pods_mpd_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33EC7428F0028E1742FF2E31 /* Pods_mpd_ios.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,7 +29,9 @@
 		33EC7428F0028E1742FF2E31 /* Pods_mpd_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mpd_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD1CB8D2CE2F05C3F6DC2D0E /* Pods-mpd-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mpd-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-mpd-ios/Pods-mpd-ios.release.xcconfig"; sourceTree = "<group>"; };
 		C60A38E51E0A76910043F02C /* ViewControllerSongs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerSongs.swift; sourceTree = "<group>"; };
-		C682DCC61E02959C00778256 /* MPDStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPDStatus.swift; sourceTree = "<group>"; };
+		C60A38EA1E0AC7BD0043F02C /* MPD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPD.swift; sourceTree = "<group>"; };
+		C60A38EB1E0AC7BD0043F02C /* MPDSong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPDSong.swift; sourceTree = "<group>"; };
+		C60A38EC1E0AC7BD0043F02C /* MPDStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPDStatus.swift; sourceTree = "<group>"; };
 		C682DCC81E029ECD00778256 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		C682DCCE1E0426B700778256 /* ViewControllerMusic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerMusic.swift; sourceTree = "<group>"; };
 		C682DCD01E042CAC00778256 /* ViewControllerAlbums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerAlbums.swift; sourceTree = "<group>"; };
@@ -42,8 +44,6 @@
 		C6EFE6E41E01A2590018CB26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C6EFE6E61E01A2590018CB26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6EFE6EC1E01A3F60018CB26 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		C6EFE6EE1E01AEF00018CB26 /* MPD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPD.swift; sourceTree = "<group>"; };
-		C6FAAC5E1E05EF9600AE85A1 /* MPDSong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPDSong.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +64,16 @@
 				33EC7428F0028E1742FF2E31 /* Pods_mpd_ios.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C60A38E91E0AC7BD0043F02C /* MPD */ = {
+			isa = PBXGroup;
+			children = (
+				C60A38EA1E0AC7BD0043F02C /* MPD.swift */,
+				C60A38EB1E0AC7BD0043F02C /* MPDSong.swift */,
+				C60A38EC1E0AC7BD0043F02C /* MPDStatus.swift */,
+			);
+			path = MPD;
 			sourceTree = "<group>";
 		};
 		C6EFE6CE1E01A2590018CB26 = {
@@ -107,7 +117,7 @@
 		C6EFE6F11E01AF070018CB26 /* Code */ = {
 			isa = PBXGroup;
 			children = (
-				C6FAAC601E05FF8400AE85A1 /* MPD */,
+				C60A38E91E0AC7BD0043F02C /* MPD */,
 				C6EFE6DA1E01A2590018CB26 /* AppDelegate.swift */,
 				C6EFE6DC1E01A2590018CB26 /* ViewControllerHome.swift */,
 				C682DCCE1E0426B700778256 /* ViewControllerMusic.swift */,
@@ -118,16 +128,6 @@
 				C682DCC81E029ECD00778256 /* String.swift */,
 			);
 			name = Code;
-			sourceTree = "<group>";
-		};
-		C6FAAC601E05FF8400AE85A1 /* MPD */ = {
-			isa = PBXGroup;
-			children = (
-				C6EFE6EE1E01AEF00018CB26 /* MPD.swift */,
-				C6FAAC5E1E05EF9600AE85A1 /* MPDSong.swift */,
-				C682DCC61E02959C00778256 /* MPDStatus.swift */,
-			);
-			name = MPD;
 			sourceTree = "<group>";
 		};
 		E2F684FC0794951F77201BDA /* Pods */ = {
@@ -263,16 +263,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6FAAC5F1E05EF9600AE85A1 /* MPDSong.swift in Sources */,
+				C60A38EE1E0AC7BD0043F02C /* MPDSong.swift in Sources */,
 				C6EFE6ED1E01A3F60018CB26 /* Settings.swift in Sources */,
+				C60A38EF1E0AC7BD0043F02C /* MPDStatus.swift in Sources */,
 				C682DCD11E042CAC00778256 /* ViewControllerAlbums.swift in Sources */,
-				C6EFE6EF1E01AEF00018CB26 /* MPD.swift in Sources */,
 				C6A0652F1E01CDB100B5CADD /* ViewControllerSettings.swift in Sources */,
-				C682DCC71E02959C00778256 /* MPDStatus.swift in Sources */,
 				C682DCCF1E0426B700778256 /* ViewControllerMusic.swift in Sources */,
 				C682DCC91E029ECD00778256 /* String.swift in Sources */,
 				C6EFE6DD1E01A2590018CB26 /* ViewControllerHome.swift in Sources */,
 				C60A38E61E0A76910043F02C /* ViewControllerSongs.swift in Sources */,
+				C60A38ED1E0AC7BD0043F02C /* MPD.swift in Sources */,
 				C6EFE6DB1E01A2590018CB26 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
