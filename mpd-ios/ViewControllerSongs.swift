@@ -1,20 +1,21 @@
 //
-//  ViewControllerAlbums.swift
+//  ViewControllerSongs.swift
 //  mpd-ios
 //
-//  Created by Julius Paffrath on 16.12.16.
+//  Created by Julius Paffrath on 21.12.16.
 //  Copyright © 2016 Julius Paffrath. All rights reserved.
 //
 
 import UIKit
 
-class ViewControllerAlbums: UITableViewController {
-    private let TAG_LABEL_ALBUMNAME: Int = 100
+class ViewControllerSongs: UITableViewController {
+    private let TAG_LABEL_SONGNAME: Int = 100
     private let COLOR_BLUE = UIColor.init(colorLiteralRed: Float(55.0/255), green: Float(111.0/255), blue: Float(165.0/255), alpha: 1)
 
-    private var albums: [String] = []
+    private var songs: [String] = []
     
     var artist: String = ""
+    var album: String = ""
     
     // MARK: Init
     
@@ -22,19 +23,19 @@ class ViewControllerAlbums: UITableViewController {
         self.refreshControl = UIRefreshControl.init()
         self.refreshControl?.backgroundColor = self.COLOR_BLUE
         self.refreshControl?.tintColor = UIColor.white
-        self.refreshControl?.addTarget(self, action: #selector(ViewControllerAlbums.reloadAlbums), for: UIControlEvents.valueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(ViewControllerSongs.reloadSongs), for: UIControlEvents.valueChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.title = self.artist
-        self.reloadAlbums()
+        self.title = self.album
+        self.reloadSongs()
     }
     
     // MARK: Private Methods
     
-    func reloadAlbums() {
-        MPD.sharedInstance.getAlbums(forArtist: self.artist) { (albums: [String]) in
-            self.albums = albums
+    func reloadSongs() {
+        MPD.sharedInstance.getSongs(forAlbum: self.album, byArtist: self.artist) { (songs: [String]) in
+            self.songs = songs
             self.tableView.reloadData()
             self.refreshControl?.endRefreshing()
         }
@@ -43,7 +44,7 @@ class ViewControllerAlbums: UITableViewController {
     // MARK: TableView Delegates
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        if self.albums.count > 0 {
+        if self.songs.count > 0 {
             self.tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
             self.tableView.backgroundView = nil
 
@@ -53,7 +54,7 @@ class ViewControllerAlbums: UITableViewController {
             let size = self.view.bounds.size
             let labelMsg = UILabel.init(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: size.width, height: size.height)))
             
-            labelMsg.text = "No albums available! Pull to refresh"
+            labelMsg.text = "No songs available! Pull to refresh"
             labelMsg.textColor = self.COLOR_BLUE
             labelMsg.numberOfLines = 0
             labelMsg.textAlignment = NSTextAlignment.center
@@ -68,22 +69,18 @@ class ViewControllerAlbums: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.albums.count
+        return self.songs.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
 
-        let labelAlbumname: UILabel = cell.viewWithTag(self.TAG_LABEL_ALBUMNAME) as! UILabel
-        labelAlbumname.text = String(self.albums[indexPath.row])
+        let labelSongname: UILabel = cell.viewWithTag(self.TAG_LABEL_SONGNAME) as! UILabel
+        labelSongname.text = String(self.songs[indexPath.row])
 
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ViewControllerSongs") as! ViewControllerSongs
-        viewController.artist = self.artist
-        viewController.album = self.albums[indexPath.row]
-        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }

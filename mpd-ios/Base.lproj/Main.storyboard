@@ -289,7 +289,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mKD-Nj-76E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="958" y="-851"/>
+            <point key="canvasLocation" x="1010" y="-788"/>
         </scene>
         <!--Artists-->
         <scene sceneID="1qq-KK-XRg">
@@ -390,6 +390,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6UY-mY-Cf1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1020" y="689"/>
+        </scene>
+        <!--View Controller Songs-->
+        <scene sceneID="qrA-Ap-zeJ">
+            <objects>
+                <tableViewController storyboardIdentifier="ViewControllerSongs" id="PrY-KG-2r3" customClass="ViewControllerSongs" customModule="mpd_ios" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="EuX-zG-OwX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" id="kuN-v1-dHE">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kuN-v1-dHE" id="aZv-D9-GZx">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SONG" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIW-Bb-9XT">
+                                            <rect key="frame" x="65" y="11" width="302" height="21"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="tIW-Bb-9XT" firstAttribute="trailing" secondItem="aZv-D9-GZx" secondAttribute="trailingMargin" id="WJ2-jt-heY"/>
+                                        <constraint firstItem="tIW-Bb-9XT" firstAttribute="leading" secondItem="aZv-D9-GZx" secondAttribute="leadingMargin" constant="57" id="XCw-Ea-uOX"/>
+                                        <constraint firstItem="tIW-Bb-9XT" firstAttribute="top" secondItem="aZv-D9-GZx" secondAttribute="topMargin" constant="3" id="t93-ob-Nkh"/>
+                                        <constraint firstItem="tIW-Bb-9XT" firstAttribute="centerY" secondItem="aZv-D9-GZx" secondAttribute="centerY" id="tYm-Pa-gbc"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="PrY-KG-2r3" id="UHa-Jj-WKr"/>
+                            <outlet property="delegate" destination="PrY-KG-2r3" id="txH-d1-ovJ"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XNr-mb-BdX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1686" y="-788"/>
         </scene>
     </scenes>
     <resources>
