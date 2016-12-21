@@ -443,13 +443,13 @@ class MPD: NSObject {
         })
     }
     
-    /// Loads a song from a given playlist
+    /// Plays a song from a given playlist
     ///
     /// - parameters:
     ///     - playlist: name of the playlist containing the song
     ///     - songNr: number of the song
     ///     - handler: is called when the command has finished
-    func loadSongFromPlaylist(playlist: String, songNr: Int, handler:@escaping ()->Void) {
+    func playSongFromPlaylist(playlist: String, songNr: Int, handler:@escaping ()->Void) {
         self.sendCommandList(commands: ["clear", "load \"\(playlist)\"", "play \(songNr)"], handler: handler)
     }
     
