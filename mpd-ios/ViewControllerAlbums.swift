@@ -12,7 +12,7 @@ class ViewControllerAlbums: UITableViewController {
     private let TAG_LABEL_ALBUMNAME: Int = 100
     private let COLOR_BLUE = UIColor.init(colorLiteralRed: Float(55.0/255), green: Float(111.0/255), blue: Float(165.0/255), alpha: 1)
 
-    private var albumbs: [String] = []
+    private var albums: [String] = []
     
     var artist: String = ""
     
@@ -34,7 +34,7 @@ class ViewControllerAlbums: UITableViewController {
     
     func reloadAlbums() {
         MPD.sharedInstance.getAlbums(forArtist: self.artist) { (albums: [String]) in
-            self.albumbs = albums
+            self.albums = albums
             self.tableView.reloadData()
             self.refreshControl?.endRefreshing()
         }
@@ -43,7 +43,7 @@ class ViewControllerAlbums: UITableViewController {
     // MARK: TableView Delegates
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        if self.albumbs.count > 0 {
+        if self.albums.count > 0 {
             self.tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
             self.tableView.backgroundView = nil
 
@@ -68,14 +68,14 @@ class ViewControllerAlbums: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.albumbs.count
+        return self.albums.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
 
         let labelAlbumname: UILabel = cell.viewWithTag(self.TAG_LABEL_ALBUMNAME) as! UILabel
-        labelAlbumname.text = String(self.albumbs[indexPath.row])
+        labelAlbumname.text = String(self.albums[indexPath.row])
 
         return cell
     }
