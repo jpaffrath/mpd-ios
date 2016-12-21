@@ -174,6 +174,9 @@ class ViewControllerHome: UIViewController, UITableViewDelegate, UITableViewData
 		if let title = song?.title, let artist = song?.artist {
 			self.labelCurrentSong.text = "\(title) - \(artist)"
 		}
+		else {
+			self.labelCurrentSong.text = "No current song"
+		}
 	}
 	
 	// MARK: TableView Delegates
