@@ -53,7 +53,7 @@ class ViewControllerAlbums: UITableViewController {
             let size = self.view.bounds.size
             let labelMsg = UILabel.init(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: size.width, height: size.height)))
             
-            labelMsg.text = "No songs available! Pull to refresh playlists"
+            labelMsg.text = "No albums available! Pull to refresh"
             labelMsg.textColor = self.COLOR_BLUE
             labelMsg.numberOfLines = 0
             labelMsg.textAlignment = NSTextAlignment.center
