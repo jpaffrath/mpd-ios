@@ -170,10 +170,13 @@ class ViewControllerHome: UIViewController, UITableViewDelegate, UITableViewData
 			}
 			
 			MPD.sharedInstance.getCurrentPlaylist { (songs: [MPDSong]) in
-				self.currentPlaylist = songs
-				self.tableViewSongs.reloadData()
-				
 				MPD.sharedInstance.getCurrentSong { (song: MPDSong?) in
+
+					if self.currentPlaylist != songs || self.currentPlaylist.isEmpty {
+						self.currentPlaylist = songs
+						self.tableViewSongs.reloadData()
+					}
+
 					self.loadCurrentSong(song: song)
 				}
 			}
