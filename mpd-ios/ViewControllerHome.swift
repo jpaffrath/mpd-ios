@@ -8,11 +8,13 @@
 
 import UIKit
 import SwiftSocket
+import Toast_Swift
 
 class ViewControllerHome: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	private let TAG_LABEL_SONGNR:   Int = 100
 	private let TAG_LABEL_SONGNAME: Int = 101
 	private let COLOR_BLUE = UIColor.init(colorLiteralRed: Float(55.0/255), green: Float(111.0/255), blue: Float(165.0/255), alpha: 1)
+	private let TOAST_DURATION = 1.0
 	
 	private let buttonImagePlay = UIImage(named: "play")
 	private let buttonImagePlayDisabled = UIImage(named: "play_disabled")
@@ -59,6 +61,8 @@ class ViewControllerHome: UIViewController, UITableViewDelegate, UITableViewData
 	override func viewDidLoad() {
 		self.buttonNext.setImage(self.buttonImageNextDisabled, for: UIControlState.disabled)
 		self.buttonPrevious.setImage(self.buttonImagePreviousDisabled, for: UIControlState.disabled)
+		
+		self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(ViewControllerHome.clearPlaylist))
 	}
 	
 	private func initUpdateTimer() {
@@ -192,6 +196,12 @@ class ViewControllerHome: UIViewController, UITableViewDelegate, UITableViewData
 		}
 		else {
 			self.labelCurrentSong.text = "No current song"
+		}
+	}
+	
+	func clearPlaylist() {
+		MPD.sharedInstance.clearCurrentPlaylist {
+			self.view.makeToast("Current playlist is cleared", duration: self.TOAST_DURATION, position: .center)
 		}
 	}
 	
