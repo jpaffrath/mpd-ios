@@ -25,6 +25,8 @@ class ViewControllerSongs: UITableViewController {
         self.refreshControl?.backgroundColor = self.COLOR_BLUE
         self.refreshControl?.tintColor = UIColor.white
         self.refreshControl?.addTarget(self, action: #selector(ViewControllerSongs.reloadSongs), for: UIControlEvents.valueChanged)
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(ViewControllerSongs.addAllSongs))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,6 +41,12 @@ class ViewControllerSongs: UITableViewController {
             self.songs = songs
             self.tableView.reloadData()
             self.refreshControl?.endRefreshing()
+        }
+    }
+    
+    func addAllSongs() {
+        MPD.sharedInstance.loadAlbum(name: self.album, fromArtist: self.artist) { 
+            self.tableView.makeToast("Added \(self.album) to current playlist", duration: 0.5, position: .center)
         }
     }
     
