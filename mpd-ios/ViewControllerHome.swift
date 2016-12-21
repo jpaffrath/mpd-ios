@@ -32,6 +32,8 @@ class ViewControllerHome: UIViewController, UITableViewDelegate, UITableViewData
 	private var currentPlaylist: [MPDSong] = []
 	private var mpdState: MPDStatus.MPDState = MPDStatus.MPDState.stop
 	
+	private var updateTimer: Timer? = nil
+	
     @IBOutlet weak var buttonPlay: UIButton!
     @IBOutlet weak var buttonNext: UIButton!
     @IBOutlet weak var buttonPrevious: UIButton!
@@ -46,13 +48,27 @@ class ViewControllerHome: UIViewController, UITableViewDelegate, UITableViewData
 			self.showSettingsViewController()
 		}
 		else {
-			self.loadState()
+			self.initUpdateTimer()
 		}
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		self.updateTimer?.invalidate()
 	}
 	
 	override func viewDidLoad() {
 		self.buttonNext.setImage(self.buttonImageNextDisabled, for: UIControlState.disabled)
 		self.buttonPrevious.setImage(self.buttonImagePreviousDisabled, for: UIControlState.disabled)
+	}
+	
+	private func initUpdateTimer() {
+		if #available(iOS 10.0, *) {
+			self.updateTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (timer: Timer) in
+				self.loadState()
+			})
+		} else {
+
+		}
 	}
 	
 	// IBActions
