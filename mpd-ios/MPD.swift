@@ -443,6 +443,18 @@ class MPD: NSObject {
         }
     }
     
+    /// Loads a given album into the current playlist
+    ///
+    /// - parameters:
+    ///     - name: name of the album
+    ///     - fromArtist: artist of the album
+    ///     - handler: is called when the command has finished
+    func loadAlbum(name: String, fromArtist: String, handler:@escaping ()->Void) {
+        self.sendCommand(command: "findadd album \"\(name)\" artist \"\(fromArtist)\"") { (result: String?) in
+            handler()
+        }
+    }
+    
     /// Loads a playlist
     ///
     /// - parameters:
