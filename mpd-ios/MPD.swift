@@ -15,6 +15,8 @@ class MPD: NSObject {
     private let client: TCPClient
     private(set) var version: String
     
+    // MARK: Init
+    
     /// Shared Instance of the MPD object
     static let sharedInstance: MPD = {
         return MPD(settings: Settings.sharedInstance)
@@ -25,7 +27,15 @@ class MPD: NSObject {
         self.version = ""
     }
     
-    // strips a mpd server result
+    // MARK: Private Methods
+    
+    /// Strips a mpd server result
+    ///
+    /// - parameters:
+    ///     - result: result to strip
+    ///     - part: number of element to return
+    ///
+    /// - returns: optional string containing the stripped part or nil
     private func stripResult(result: String, part: Int) -> String? {
         let stripped = result.characters.split(separator: " ").map(String.init)[part]
         // drops the \n at the end of a mpd response
@@ -33,6 +43,12 @@ class MPD: NSObject {
     }
     
     /// Strips a mpd server list result
+    ///
+    /// - parameters:
+    ///     - by: sequence to strip by
+    ///     - input: input to strip
+    ///
+    /// - returns: string array containing the stripped part or empty array
     private func stripListResult(by: String, input: String) -> [String] {
         var values: [String] = []
         
@@ -46,6 +62,8 @@ class MPD: NSObject {
     }
     
     /// Connects to a mpd server
+    ///
+    /// - returns: true if the connection was successfull, otherwise false
     private func connect() -> Bool {
         switch self.client.connect(timeout: self.TIMEOUT) {
             case .success:
@@ -116,6 +134,11 @@ class MPD: NSObject {
         }
     }
     
+    /// Sends a command list async to a mpd server
+    ///
+    /// - parameters:
+    ///     - commands: command list to send to the server
+    ///     - handler: is called with the response when the response is received
     private func sendCommandList(commands: [String], handler:@escaping ()->Void) -> Void {
         DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
             
@@ -152,8 +175,12 @@ class MPD: NSObject {
         }
     }
     
-    // Public Functions
+    // MARK: Public Functions
     
+    /// Gets the current mpd status
+    ///
+    /// - parameters:
+    ///     - handler: is called with the current mpd status when the command has finished
     func getStatus(handler:@escaping (MPDStatus?)->Void) {
         self.sendCommand(command: "status", resultHandler: { (result: String?) in
             if result != nil {
@@ -171,6 +198,10 @@ class MPD: NSObject {
         })
     }
     
+    /// Gets the current playlist
+    ///
+    /// - parameters:
+    ///     - handler: is called with an array containing the songs of the current playlist when the command has finished
     func getCurrentPlaylist(handler:@escaping ([MPDSong])->Void) {
         self.sendCommand(command: "playlistinfo", resultHandler: { (result: String?) in
             if let res = result {
@@ -192,6 +223,10 @@ class MPD: NSObject {
         })
     }
     
+    /// Gets all playlists
+    ///
+    /// - parameters:
+    ///     - handler: is called with the playlists when the command has finished
     func getPlaylists(handler:@escaping ([String])->Void) {
         self.sendCommand(command: "listplaylists", resultHandler: { (result: String?) in
             if let res = result {
@@ -219,6 +254,11 @@ class MPD: NSObject {
         })
     }
     
+    /// Gets songs from a playlist
+    ///
+    /// - parameters:
+    ///     - playlist: name of the playlist
+    ///     - handler: is called with an array of songs from the given playlist when the command has finished
     func getSongsFromPlaylist(playlist: String, handler:@escaping ([MPDSong])->Void) {
         // playlist with whitespaces have to be escaped with quotes
         self.sendCommand(command: "listplaylistinfo \"\(playlist)\"", resultHandler: { (result: String?) in
@@ -241,6 +281,10 @@ class MPD: NSObject {
         })
     }
     
+    /// Gets all artists
+    ///
+    /// - parameters:
+    ///     - handler: is called with the artists when the command has finished
     func getArtists(handler:@escaping ([String])->Void) {
         self.sendCommand(command: "list artist") { (result: String?) in
             var artists: [String] = []
@@ -253,6 +297,10 @@ class MPD: NSObject {
         }
     }
     
+    /// Gets all albums
+    ///
+    /// - parameters:
+    ///     - handler: is called with the albums when the command has finished
     func getAlbums(handler:@escaping ([String])->Void) {
         self.sendCommand(command: "list album") { (result: String?) in
             var albums: [String] = []
@@ -356,7 +404,9 @@ class MPD: NSObject {
     func getCurrentSong(handler:@escaping (MPDSong?)->Void) {
         self.sendCommand(command: "currentsong", resultHandler: {(result: String?) in
             if result != nil {
-                handler(MPDSong.init(input: result!))
+                if result != "OK\n" {
+                    handler(MPDSong.init(input: result!))
+                }
             }
             else {
                 handler(nil)
@@ -375,11 +425,20 @@ class MPD: NSObject {
         })
     }
     
+    /// Loads a song from a given playlist
+    ///
+    /// - parameters:
+    ///     - playlist: name of the playlist containing the song
+    ///     - songNr: number of the song
+    ///     - handler: is called when the command has finished
     func loadSongFromPlaylist(playlist: String, songNr: Int, handler:@escaping ()->Void) {
         self.sendCommandList(commands: ["clear", "load \"\(playlist)\"", "play \(songNr)"], handler: handler)
     }
     
     /// Clears the current playlist
+    ///
+    /// - parameters:
+    ///     - handler: is called when the command has finished
     func clearCurrentPlaylist(handler:@escaping ()->Void) {
         self.sendCommand(command: "clear", resultHandler: {(result: String?) in
             handler()
@@ -390,6 +449,7 @@ class MPD: NSObject {
     ///
     /// - parameters:
     ///     - volume: volume to be set. Has to be in the range 0 - 100
+    ///     - handler: is called when the command has finished
     func setVolume(volume: UInt, handler:@escaping ()->Void) {
         if (volume > 100) {
             print("Error: The range of volume is 0-100!")
@@ -401,27 +461,36 @@ class MPD: NSObject {
         })
     }
     
+    /// Sets random
+    ///
+    /// - parameters:
+    ///     - state: new random state
+    ///     - handler: is called when the command has finished
     func setRandom(state: Bool, handler:@escaping ()->Void) {
         self.sendCommand(command: "random \(state ? "1" : "0")", resultHandler: {(result: String?) in
             handler()
         })
     }
     
+    /// Sets repeat
+    ///
+    /// - parameters:
+    ///     - state: new repeat state
+    ///     - handler: is called when the command has finished
     func setRepeat(state: Bool, handler:@escaping ()->Void) {
         self.sendCommand(command: "repeat \(state ? "1" : "0")", resultHandler: {(result: String?) in
             handler()
         })
     }
     
+    /// Sets single
+    ///
+    /// - parameters:
+    ///     - state: new single state
+    ///     - handler: is called when the command has finished
     func setSingle(state: Bool, handler:@escaping ()->Void) {
         self.sendCommand(command: "single \(state ? "1" : "0")", resultHandler: {(result: String?) in
             handler()
         })
-    }
-    
-    func loadSongFromPlaylist(playlist: String, song: Int, handler:@escaping ()->Void) {
-        self.sendCommandList(commands:["clear", "load \"\(playlist)\"", "play \(song)"]) {
-            handler()
-        }
     }
 }
