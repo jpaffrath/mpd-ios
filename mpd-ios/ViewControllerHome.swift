@@ -182,7 +182,27 @@ class ViewControllerHome: UIViewController, UITableViewDelegate, UITableViewData
 	// MARK: TableView Delegates
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
-		return 1
+		if self.currentPlaylist.count > 0 {
+			self.tableViewSongs.separatorStyle = UITableViewCellSeparatorStyle.singleLine
+			self.tableViewSongs.backgroundView = nil
+			return 1
+		}
+		else {
+			let size = self.tableViewSongs.bounds.size
+			let labelMsg = UILabel.init(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: size.width, height: size.height)))
+
+			labelMsg.text = "Empty playlist"
+			labelMsg.textColor = self.COLOR_BLUE
+			labelMsg.numberOfLines = 0
+			labelMsg.textAlignment = NSTextAlignment.center
+			labelMsg.font = UIFont.init(name: "Avenir", size: 20)
+			labelMsg.sizeToFit()
+
+			self.tableViewSongs.backgroundView = labelMsg
+			self.tableViewSongs.separatorStyle = UITableViewCellSeparatorStyle.none
+		}
+		
+		return 0
 	}
 
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
