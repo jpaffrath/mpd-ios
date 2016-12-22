@@ -7,6 +7,7 @@ The following features are already implemented
 * Scroll artists, albums and songs
 * Add songs or albums to your current playlist
 * Display current playlist and current song information
+* Scroll stored playlists
 
 # Installation
 MPD Player needs the libraries [SwiftSocket](https://github.com/swiftsocket/SwiftSocket) and [Toast-Swift](https://github.com/scalessec/Toast-Swift).
