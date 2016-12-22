@@ -75,4 +75,10 @@ class ViewControllerPlaylists: UITableViewController {
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ViewControllerPlaylistSongs") as! ViewControllerPlaylistSongs
+        viewController.playlist = self.playlists[indexPath.row]
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
 }
