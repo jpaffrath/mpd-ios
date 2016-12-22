@@ -348,6 +348,33 @@ class MPD: NSObject {
         }
     }
     
+    /// Gets all songs for a given album by a given artist
+    ///
+    /// - parameters:
+    ///     - forAlbum: album to query songs
+    ///     - byArtist: artist from album
+    ///     - handler: is called with the songs when the command has finished
+    func getSongs(forAlbum: String, byArtist: String, handler:@escaping ([MPDSong])->Void) {
+        self.sendCommand(command: "search artist \"\(byArtist)\" album \"\(forAlbum)\"") { (result: String?) in
+            if let res = result {
+                var songs: [MPDSong] = []
+                let metadata: [String] = res.components(separatedBy: "file: ")
+                
+                for input in metadata {
+                    
+                    if input.isEmpty == false {
+                        songs.append(MPDSong.init(input: input))
+                    }
+                }
+                
+                handler(songs)
+            }
+            else {
+                handler([])
+            }
+        }
+    }
+    
     /// Begins playing the playlist
     ///
     /// - parameters:
