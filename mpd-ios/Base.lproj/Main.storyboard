@@ -474,6 +474,57 @@
             </objects>
             <point key="canvasLocation" x="1686" y="-788"/>
         </scene>
+        <!--View Controller Playlist Songs-->
+        <scene sceneID="nBb-YU-pGi">
+            <objects>
+                <tableViewController storyboardIdentifier="ViewControllerPlaylistSongs" id="WeF-BB-ykc" customClass="ViewControllerPlaylistSongs" customModule="mpd_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="LVG-Jd-lTe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="myCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" rowHeight="55" id="fpc-sD-5gO">
+                                <rect key="frame" x="0.0" y="28" width="375" height="55"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fpc-sD-5gO" id="Rw9-yk-E68">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SONG NAME" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSu-Yv-2NI">
+                                            <rect key="frame" x="8" y="8" width="359" height="24"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ARTIST NAME" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3L-qX-Kif">
+                                            <rect key="frame" x="8" y="25" width="359" height="21"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="W3L-qX-Kif" firstAttribute="top" secondItem="Rw9-yk-E68" secondAttribute="topMargin" constant="17" id="1Y5-3S-wMs"/>
+                                        <constraint firstItem="mSu-Yv-2NI" firstAttribute="trailing" secondItem="Rw9-yk-E68" secondAttribute="trailingMargin" id="CLQ-Lo-APw"/>
+                                        <constraint firstItem="mSu-Yv-2NI" firstAttribute="trailing" secondItem="W3L-qX-Kif" secondAttribute="trailing" id="K2J-el-JoT"/>
+                                        <constraint firstItem="mSu-Yv-2NI" firstAttribute="top" secondItem="Rw9-yk-E68" secondAttribute="topMargin" id="P3v-Mw-t7Z"/>
+                                        <constraint firstItem="W3L-qX-Kif" firstAttribute="bottom" secondItem="Rw9-yk-E68" secondAttribute="bottomMargin" id="c1F-Th-UFq"/>
+                                        <constraint firstItem="mSu-Yv-2NI" firstAttribute="leading" secondItem="W3L-qX-Kif" secondAttribute="leading" id="sU4-KO-Tgx"/>
+                                        <constraint firstItem="mSu-Yv-2NI" firstAttribute="leading" secondItem="Rw9-yk-E68" secondAttribute="leadingMargin" id="zUQ-9T-fMv"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="WeF-BB-ykc" id="Suo-KH-ex1"/>
+                            <outlet property="delegate" destination="WeF-BB-ykc" id="Jid-PN-rQN"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B3p-gC-oeQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2388" y="-788.45577211394311"/>
+        </scene>
         <!--Playlists-->
         <scene sceneID="cFk-VS-rNq">
             <objects>
