@@ -395,6 +395,9 @@ class MPD: NSObject {
     }
     
     /// Resumes playing
+    ///
+    /// - parameters:
+    ///     - handler: is called when the command has finished
     func resume(handler:@escaping ()->Void) {
         self.sendCommand(command: "pause 0", resultHandler: {(result: String?) in
             handler()
@@ -402,6 +405,9 @@ class MPD: NSObject {
     }
     
     /// Pauses playing
+    ///
+    /// - parameters:
+    ///     - handler: is called when the command has finished
     func pause(handler:@escaping ()->Void) {
         self.sendCommand(command: "pause 1", resultHandler: {(result: String?) in
             handler()
@@ -409,6 +415,9 @@ class MPD: NSObject {
     }
     
     /// Stops playing
+    ///
+    /// - parameters:
+    ///     - handler: is called when the command has finished
     func stop(handler:@escaping ()->Void) {
         self.sendCommand(command: "stop", resultHandler: {(result: String?) in
             handler()
