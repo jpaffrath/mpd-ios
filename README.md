@@ -14,3 +14,6 @@ Clone the git repository and run `pod install`. This will download the required 
 
 # :bulb: Contributions
 You want to report a bug or a missing feature? Please create an [issue](https://github.com/jpaffrath/mpd-ios/issues).
+
+# Additional Information
+The icons used in this app are made by [Icons8](https://icons8.com)
