@@ -73,8 +73,8 @@ class ViewControllerMusic: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
 
-        let labelPlaylist: UILabel = cell.viewWithTag(self.TAG_LABEL_ARTIST) as! UILabel
-        labelPlaylist.text = self.artists[indexPath.row]
+        let labelArtist: UILabel = cell.viewWithTag(self.TAG_LABEL_ARTIST) as! UILabel
+        labelArtist.text = self.artists[indexPath.row]
 
         return cell
     }
