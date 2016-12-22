@@ -38,7 +38,7 @@ class ViewControllerSongs: UITableViewController {
     // MARK: Private Methods
     
     func reloadSongs() {
-        MPD.sharedInstance.getSongs(forAlbum: self.album, byArtist: self.artist) { (songs: [String]) in
+        MPD.sharedInstance.getSongnames(forAlbum: self.album, byArtist: self.artist) { (songs: [String]) in
             self.songs = songs
             self.tableView.reloadData()
             self.refreshControl?.endRefreshing()
