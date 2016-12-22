@@ -24,7 +24,7 @@ class ViewControllerMusic: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        MPD.sharedInstance.getArtists { (artists: [String]) in
+        MPD.sharedInstance.getArtistnames { (artists: [String]) in
             self.artists = artists
             self.tableView.reloadData()
         }
@@ -33,7 +33,7 @@ class ViewControllerMusic: UITableViewController {
     // MARK: Private Methods
     
     func reloadArtists() {
-        MPD.sharedInstance.getArtists { (artists: [String]) in
+        MPD.sharedInstance.getArtistnames { (artists: [String]) in
             self.artists = artists
             self.tableView.reloadData()
             self.refreshControl?.endRefreshing()

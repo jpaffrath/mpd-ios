@@ -281,11 +281,11 @@ class MPD: NSObject {
         })
     }
     
-    /// Gets all artists
+    /// Gets all artist names
     ///
     /// - parameters:
     ///     - handler: is called with the artists when the command has finished
-    func getArtists(handler:@escaping ([String])->Void) {
+    func getArtistnames(handler:@escaping ([String])->Void) {
         self.sendCommand(command: "list artist") { (result: String?) in
             var artists: [String] = []
 
