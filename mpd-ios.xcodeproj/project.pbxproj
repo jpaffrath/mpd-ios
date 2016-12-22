@@ -11,6 +11,7 @@
 		C60A38ED1E0AC7BD0043F02C /* MPD.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60A38EA1E0AC7BD0043F02C /* MPD.swift */; };
 		C60A38EE1E0AC7BD0043F02C /* MPDSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60A38EB1E0AC7BD0043F02C /* MPDSong.swift */; };
 		C60A38EF1E0AC7BD0043F02C /* MPDStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60A38EC1E0AC7BD0043F02C /* MPDStatus.swift */; };
+		C60A38FB1E0BE1DC0043F02C /* ViewControllerPlaylists.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60A38FA1E0BE1DC0043F02C /* ViewControllerPlaylists.swift */; };
 		C682DCC91E029ECD00778256 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C682DCC81E029ECD00778256 /* String.swift */; };
 		C682DCCF1E0426B700778256 /* ViewControllerMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C682DCCE1E0426B700778256 /* ViewControllerMusic.swift */; };
 		C682DCD11E042CAC00778256 /* ViewControllerAlbums.swift in Sources */ = {isa = PBXBuildFile; fileRef = C682DCD01E042CAC00778256 /* ViewControllerAlbums.swift */; };
@@ -32,6 +33,7 @@
 		C60A38EA1E0AC7BD0043F02C /* MPD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPD.swift; sourceTree = "<group>"; };
 		C60A38EB1E0AC7BD0043F02C /* MPDSong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPDSong.swift; sourceTree = "<group>"; };
 		C60A38EC1E0AC7BD0043F02C /* MPDStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPDStatus.swift; sourceTree = "<group>"; };
+		C60A38FA1E0BE1DC0043F02C /* ViewControllerPlaylists.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerPlaylists.swift; sourceTree = "<group>"; };
 		C682DCC81E029ECD00778256 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		C682DCCE1E0426B700778256 /* ViewControllerMusic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerMusic.swift; sourceTree = "<group>"; };
 		C682DCD01E042CAC00778256 /* ViewControllerAlbums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerAlbums.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				C682DCCE1E0426B700778256 /* ViewControllerMusic.swift */,
 				C682DCD01E042CAC00778256 /* ViewControllerAlbums.swift */,
 				C60A38E51E0A76910043F02C /* ViewControllerSongs.swift */,
+				C60A38FA1E0BE1DC0043F02C /* ViewControllerPlaylists.swift */,
 				C6A0652E1E01CDB100B5CADD /* ViewControllerSettings.swift */,
 				C6EFE6EC1E01A3F60018CB26 /* Settings.swift */,
 				C682DCC81E029ECD00778256 /* String.swift */,
@@ -267,6 +270,7 @@
 				C6EFE6ED1E01A3F60018CB26 /* Settings.swift in Sources */,
 				C60A38EF1E0AC7BD0043F02C /* MPDStatus.swift in Sources */,
 				C682DCD11E042CAC00778256 /* ViewControllerAlbums.swift in Sources */,
+				C60A38FB1E0BE1DC0043F02C /* ViewControllerPlaylists.swift in Sources */,
 				C6A0652F1E01CDB100B5CADD /* ViewControllerSettings.swift in Sources */,
 				C682DCCF1E0426B700778256 /* ViewControllerMusic.swift in Sources */,
 				C682DCC91E029ECD00778256 /* String.swift in Sources */,

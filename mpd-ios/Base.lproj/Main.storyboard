@@ -227,6 +227,49 @@
             </objects>
             <point key="canvasLocation" x="1686" y="-142"/>
         </scene>
+        <!--Playlists-->
+        <scene sceneID="cdO-iv-ahR">
+            <objects>
+                <tableViewController id="nUy-fC-zWE" customClass="ViewControllerPlaylists" customModule="mpd_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="U58-Jc-Usa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" id="535-zl-nhJ">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="535-zl-nhJ" id="TPf-3E-9fP">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLAYLIST" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THW-JM-dNx">
+                                            <rect key="frame" x="8" y="11" width="359" height="21"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="THW-JM-dNx" firstAttribute="trailing" secondItem="TPf-3E-9fP" secondAttribute="trailingMargin" id="Hsg-MX-0iY"/>
+                                        <constraint firstItem="THW-JM-dNx" firstAttribute="centerY" secondItem="TPf-3E-9fP" secondAttribute="centerY" id="d7e-V5-q0s"/>
+                                        <constraint firstItem="THW-JM-dNx" firstAttribute="top" secondItem="TPf-3E-9fP" secondAttribute="topMargin" constant="3" id="gBH-BJ-R00"/>
+                                        <constraint firstItem="THW-JM-dNx" firstAttribute="leading" secondItem="TPf-3E-9fP" secondAttribute="leadingMargin" id="x3f-pz-EYc"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="nUy-fC-zWE" id="d7W-5G-r4F"/>
+                            <outlet property="delegate" destination="nUy-fC-zWE" id="nAE-To-ulr"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Playlists" id="qyh-JO-SRN"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WKi-YJ-tA0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2388" y="-143.47826086956522"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Q66-Fl-zD8">
             <objects>
@@ -239,6 +282,7 @@
                     <connections>
                         <segue destination="hfi-rU-xWQ" kind="relationship" relationship="viewControllers" id="DwP-Ix-njO"/>
                         <segue destination="EAb-zd-k4O" kind="relationship" relationship="viewControllers" id="hTr-2n-YIk"/>
+                        <segue destination="Ff0-IX-hmp" kind="relationship" relationship="viewControllers" id="wmd-G2-r3a"/>
                         <segue destination="R2L-KF-GG7" kind="relationship" relationship="viewControllers" id="u8A-4O-5Tk"/>
                     </connections>
                 </tabBarController>
@@ -373,7 +417,7 @@
         <scene sceneID="5C7-av-fvB">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EAb-zd-k4O" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Music" image="playlist" id="dHF-3j-zNs"/>
+                    <tabBarItem key="tabBarItem" title="Music" image="music" id="dHF-3j-zNs"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zkT-Dl-NHk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -430,9 +474,29 @@
             </objects>
             <point key="canvasLocation" x="1686" y="-788"/>
         </scene>
+        <!--Playlists-->
+        <scene sceneID="cFk-VS-rNq">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ff0-IX-hmp" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Playlists" image="playlist" id="8j7-Vh-Fj7"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="s5V-bJ-zoW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nUy-fC-zWE" kind="relationship" relationship="rootViewController" id="9gc-Wt-ioT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ww7-P1-hJM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2388" y="689"/>
+        </scene>
     </scenes>
     <resources>
         <image name="home" width="25" height="25"/>
+        <image name="music" width="32" height="32"/>
         <image name="next" width="50" height="50"/>
         <image name="playlist" width="25" height="25"/>
         <image name="previous" width="50" height="50"/>
