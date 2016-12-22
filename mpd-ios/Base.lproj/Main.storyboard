@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -449,17 +450,29 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SONG" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIW-Bb-9XT">
-                                            <rect key="frame" x="65" y="11" width="302" height="21"/>
+                                            <rect key="frame" x="106" y="11" width="261" height="22"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SONG NR" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uT3-vA-gDl">
+                                            <rect key="frame" x="8" y="11" width="90" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="90" id="wfu-N7-Z7w"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="tIW-Bb-9XT" firstAttribute="trailing" secondItem="aZv-D9-GZx" secondAttribute="trailingMargin" id="WJ2-jt-heY"/>
-                                        <constraint firstItem="tIW-Bb-9XT" firstAttribute="leading" secondItem="aZv-D9-GZx" secondAttribute="leadingMargin" constant="57" id="XCw-Ea-uOX"/>
-                                        <constraint firstItem="tIW-Bb-9XT" firstAttribute="top" secondItem="aZv-D9-GZx" secondAttribute="topMargin" constant="3" id="t93-ob-Nkh"/>
-                                        <constraint firstItem="tIW-Bb-9XT" firstAttribute="centerY" secondItem="aZv-D9-GZx" secondAttribute="centerY" id="tYm-Pa-gbc"/>
+                                        <constraint firstItem="uT3-vA-gDl" firstAttribute="centerY" secondItem="aZv-D9-GZx" secondAttribute="centerY" id="YGD-bT-I5A"/>
+                                        <constraint firstItem="uT3-vA-gDl" firstAttribute="top" secondItem="aZv-D9-GZx" secondAttribute="topMargin" constant="3" id="YTC-Am-59B"/>
+                                        <constraint firstItem="tIW-Bb-9XT" firstAttribute="leading" secondItem="uT3-vA-gDl" secondAttribute="trailing" constant="8" symbolic="YES" id="ety-qQ-3Uj"/>
+                                        <constraint firstItem="uT3-vA-gDl" firstAttribute="firstBaseline" secondItem="tIW-Bb-9XT" secondAttribute="firstBaseline" id="jI1-e7-H6c"/>
+                                        <constraint firstItem="tIW-Bb-9XT" firstAttribute="trailing" secondItem="aZv-D9-GZx" secondAttribute="trailingMargin" id="sik-ZO-8zk"/>
+                                        <constraint firstItem="uT3-vA-gDl" firstAttribute="centerY" secondItem="tIW-Bb-9XT" secondAttribute="centerY" id="tvV-sP-rWJ"/>
+                                        <constraint firstItem="uT3-vA-gDl" firstAttribute="leading" secondItem="aZv-D9-GZx" secondAttribute="leadingMargin" id="zNr-8x-KHU"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -472,7 +485,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XNr-mb-BdX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1686" y="-788"/>
+            <point key="canvasLocation" x="1685.5999999999999" y="-788.45577211394311"/>
         </scene>
         <!--View Controller Playlist Songs-->
         <scene sceneID="nBb-YU-pGi">

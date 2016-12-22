@@ -11,10 +11,11 @@ import Toast_Swift
 
 class ViewControllerSongs: UITableViewController {
     private let TAG_LABEL_SONGNAME: Int = 100
+    private let TAG_LABEL_SONGNR: Int = 101
     private let COLOR_BLUE = UIColor.init(colorLiteralRed: Float(55.0/255), green: Float(111.0/255), blue: Float(165.0/255), alpha: 1)
     private let TOAST_DURATION = 1.0
 
-    private var songs: [String] = []
+    private var songs: [MPDSong] = []
     
     var artist: String = ""
     var album: String = ""
@@ -38,11 +39,11 @@ class ViewControllerSongs: UITableViewController {
     // MARK: Private Methods
     
     func reloadSongs() {
-        MPD.sharedInstance.getSongnames(forAlbum: self.album, byArtist: self.artist) { (songs: [String]) in
+        MPD.sharedInstance.getSongs(forAlbum: self.album, byArtist: self.artist, handler: { (songs: [MPDSong]) in
             self.songs = songs
             self.tableView.reloadData()
             self.refreshControl?.endRefreshing()
-        }
+        })
     }
     
     func addAllSongs() {
@@ -86,7 +87,10 @@ class ViewControllerSongs: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
 
         let labelSongname: UILabel = cell.viewWithTag(self.TAG_LABEL_SONGNAME) as! UILabel
-        labelSongname.text = String(self.songs[indexPath.row])
+        labelSongname.text = String(self.songs[indexPath.row].title)
+        
+        let labelSongnr: UILabel = cell.viewWithTag(self.TAG_LABEL_SONGNR) as! UILabel
+        labelSongnr.text = "\(String(self.songs[indexPath.row].track))."
 
         return cell
     }
@@ -94,7 +98,7 @@ class ViewControllerSongs: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let song = self.songs[indexPath.row]
 
-        MPD.sharedInstance.loadSong(title: song, fromAlbum: self.album, byArtist: self.artist) {
+        MPD.sharedInstance.loadSong(title: song.title, fromAlbum: song.album, byArtist: song.artist) {
             self.tableView.deselectRow(at: indexPath, animated: true)
             self.tableView.makeToast("Added \(song) to current playlist", duration: self.TOAST_DURATION, position: .center)
         }
