@@ -24,10 +24,7 @@ class ViewControllerMusic: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        MPD.sharedInstance.getArtistnames { (artists: [String]) in
-            self.artists = artists
-            self.tableView.reloadData()
-        }
+        self.reloadArtists()
     }
     
     // MARK: Private Methods
