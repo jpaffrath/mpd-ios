@@ -58,6 +58,25 @@ class MPDSong: NSObject {
         }
     }
     
+    /// Returns the length of the song as a formatted string
+    ///
+    /// This will parse the seconds in MINUTES:SECONDS
+    /// - returns: length of the song as a string
+    func getSecondsString() -> String {
+        if self.time == -1 {
+            return "00:00"
+        }
+        
+        let remain = self.time % 60
+        let seconds = self.time / 60
+        
+        if remain / 10 == 0 {
+            return "\(seconds):0\(remain)"
+        }
+        
+        return "\(seconds):\(remain)"
+    }
+    
     override func isEqual(_ object: Any?) -> Bool {
         if let obj = object as? MPDSong {
             if self === obj {
