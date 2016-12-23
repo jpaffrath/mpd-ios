@@ -13,6 +13,8 @@
 		C60A38EF1E0AC7BD0043F02C /* MPDStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60A38EC1E0AC7BD0043F02C /* MPDStatus.swift */; };
 		C60A38FB1E0BE1DC0043F02C /* ViewControllerPlaylists.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60A38FA1E0BE1DC0043F02C /* ViewControllerPlaylists.swift */; };
 		C60A38FF1E0BEB0E0043F02C /* ViewControllerPlaylistSongs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60A38FE1E0BEB0E0043F02C /* ViewControllerPlaylistSongs.swift */; };
+		C60A39011E0C156B0043F02C /* MPDArtist.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60A39001E0C156B0043F02C /* MPDArtist.swift */; };
+		C60A39031E0C15780043F02C /* MPDAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60A39021E0C15780043F02C /* MPDAlbum.swift */; };
 		C682DCC91E029ECD00778256 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C682DCC81E029ECD00778256 /* String.swift */; };
 		C682DCCF1E0426B700778256 /* ViewControllerMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C682DCCE1E0426B700778256 /* ViewControllerMusic.swift */; };
 		C682DCD11E042CAC00778256 /* ViewControllerAlbums.swift in Sources */ = {isa = PBXBuildFile; fileRef = C682DCD01E042CAC00778256 /* ViewControllerAlbums.swift */; };
@@ -36,6 +38,8 @@
 		C60A38EC1E0AC7BD0043F02C /* MPDStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPDStatus.swift; sourceTree = "<group>"; };
 		C60A38FA1E0BE1DC0043F02C /* ViewControllerPlaylists.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerPlaylists.swift; sourceTree = "<group>"; };
 		C60A38FE1E0BEB0E0043F02C /* ViewControllerPlaylistSongs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerPlaylistSongs.swift; sourceTree = "<group>"; };
+		C60A39001E0C156B0043F02C /* MPDArtist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPDArtist.swift; sourceTree = "<group>"; };
+		C60A39021E0C15780043F02C /* MPDAlbum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPDAlbum.swift; sourceTree = "<group>"; };
 		C682DCC81E029ECD00778256 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		C682DCCE1E0426B700778256 /* ViewControllerMusic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerMusic.swift; sourceTree = "<group>"; };
 		C682DCD01E042CAC00778256 /* ViewControllerAlbums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerAlbums.swift; sourceTree = "<group>"; };
@@ -74,8 +78,10 @@
 			isa = PBXGroup;
 			children = (
 				C60A38EA1E0AC7BD0043F02C /* MPD.swift */,
-				C60A38EB1E0AC7BD0043F02C /* MPDSong.swift */,
 				C60A38EC1E0AC7BD0043F02C /* MPDStatus.swift */,
+				C60A39001E0C156B0043F02C /* MPDArtist.swift */,
+				C60A39021E0C15780043F02C /* MPDAlbum.swift */,
+				C60A38EB1E0AC7BD0043F02C /* MPDSong.swift */,
 			);
 			path = MPD;
 			sourceTree = "<group>";
@@ -275,8 +281,10 @@
 				C682DCD11E042CAC00778256 /* ViewControllerAlbums.swift in Sources */,
 				C60A38FB1E0BE1DC0043F02C /* ViewControllerPlaylists.swift in Sources */,
 				C60A38FF1E0BEB0E0043F02C /* ViewControllerPlaylistSongs.swift in Sources */,
+				C60A39011E0C156B0043F02C /* MPDArtist.swift in Sources */,
 				C6A0652F1E01CDB100B5CADD /* ViewControllerSettings.swift in Sources */,
 				C682DCCF1E0426B700778256 /* ViewControllerMusic.swift in Sources */,
+				C60A39031E0C15780043F02C /* MPDAlbum.swift in Sources */,
 				C682DCC91E029ECD00778256 /* String.swift in Sources */,
 				C6EFE6DD1E01A2590018CB26 /* ViewControllerHome.swift in Sources */,
 				C60A38E61E0A76910043F02C /* ViewControllerSongs.swift in Sources */,
