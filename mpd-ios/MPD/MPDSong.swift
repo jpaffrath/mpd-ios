@@ -14,6 +14,7 @@ class MPDSong: NSObject {
     private(set) var album:  String = "No Album"
     private(set) var genre:  String = "No Genre"
     private(set) var track:  Int    = -1
+    private(set) var time:   Int    = -1
     
     init(input: String) {
         for line in input.characters.split(separator: "\n").map(String.init) {
@@ -42,6 +43,12 @@ class MPDSong: NSObject {
 
                     if let trackNr = Int(track) {
                         self.track = trackNr
+                    }
+                    break
+                case "Time":
+                    let time = line.substring(from: "Time: ".endIndex)
+                    if let timeInt = Int(time) {
+                        self.time = timeInt
                     }
                     break
                 default:
