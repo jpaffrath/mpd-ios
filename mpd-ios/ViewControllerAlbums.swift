@@ -33,7 +33,7 @@ class ViewControllerAlbums: UITableViewController {
     // MARK: Private Methods
     
     func reloadAlbums() {
-        MPD.sharedInstance.getAlbums(forArtist: self.artist) { (albums: [String]) in
+        MPD.sharedInstance.getAlbumnames(forArtist: self.artist) { (albums: [String]) in
             self.albums = albums
             self.tableView.reloadData()
             self.refreshControl?.endRefreshing()

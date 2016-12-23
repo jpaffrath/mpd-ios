@@ -313,12 +313,12 @@ class MPD: NSObject {
         }
     }
     
-    /// Gets all albums by a given artist
+    /// Gets all album names by a given artist
     ///
     /// - parameters:
     ///     - forArtist: artist to query albums
     ///     - handler: is called with the albums when the command has finished
-    func getAlbums(forArtist: String, handler:@escaping ([String])->Void) {
+    func getAlbumnames(forArtist: String, handler:@escaping ([String])->Void) {
         self.sendCommand(command: "list album \"\(forArtist)\"") { (result: String?) in
             var albums: [String] = []
             
