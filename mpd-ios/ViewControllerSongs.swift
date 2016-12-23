@@ -106,7 +106,7 @@ class ViewControllerSongs: UITableViewController {
 
         MPD.sharedInstance.loadSong(title: song.title, fromAlbum: song.album, byArtist: song.artist) {
             self.tableView.deselectRow(at: indexPath, animated: true)
-            self.tableView.makeToast("Added \(song) to current playlist", duration: self.TOAST_DURATION, position: .center)
+            self.tableView.makeToast("Added \(song.title) to current playlist", duration: self.TOAST_DURATION, position: .center)
         }
     }
     
