@@ -12,6 +12,7 @@ class MPDSong: NSObject {
     private(set) var artist: String = "No Artist"
     private(set) var title:  String = "No Title"
     private(set) var album:  String = "No Album"
+    private(set) var genre:  String = "No Genre"
     private(set) var track:  Int    = -1
     
     init(input: String) {
@@ -27,6 +28,9 @@ class MPDSong: NSObject {
                     break
                 case "Album":
                     self.album = line.substring(from: "Album: ".endIndex)
+                    break
+                case "Genre":
+                    self.genre = line.substring(from: "Genre: ".endIndex)
                     break
                 case "Track":
                     var track = line.substring(from: "Track: ".endIndex)
