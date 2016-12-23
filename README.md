@@ -1,6 +1,10 @@
 # mpd-ios (MPD Player)
 MPD Player is an iOS application written in Swift 3 for controlling a mpd server.
 
+<img src="screenshots/screenshot_home.png" alt="alt text" width="250">
+<img src="screenshots/screenshot_album.png" alt="alt text" width="250">
+<img src="screenshots/screenshot_songs.png" alt="alt text" width="250">
+
 # Features
 The following features are already implemented
 * Full music control. Play, Pause, Next, Previous song
