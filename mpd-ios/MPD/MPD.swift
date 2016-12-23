@@ -297,6 +297,22 @@ class MPD: NSObject {
         }
     }
     
+    /// Gets an artist by name
+    ///
+    /// - parameters:
+    ///     - byName: name of the artist
+    ///     - handler: is called with the artist when the command has finished
+    func getArtist(byName: String, handler:@escaping (MPDArtist?)->Void) {
+        self.sendCommand(command: "search artist \"\(byName)\"") { (result: String?) in
+            if result != nil {
+                handler(MPDArtist(name: byName, input: result!))
+            }
+            else {
+                handler(nil)
+            }
+        }
+    }
+    
     /// Gets all albums
     ///
     /// - parameters:
